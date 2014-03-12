@@ -55,6 +55,7 @@ def main(args):
     utils.drop_privileges()
     if json is None:
         utils.err("This collector requires the `json' Python module.")
+        return 13  # Ask tcollector not to respawn us
     name_node_service = HadoopNameNode()
     while True:
         name_node_service.emit()
@@ -64,3 +65,4 @@ def main(args):
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))
+

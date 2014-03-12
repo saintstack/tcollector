@@ -70,6 +70,7 @@ def main(args):
     utils.drop_privileges()
     if json is None:
         utils.err("This collector requires the `json' Python module.")
+        return 13  # Ask tcollector not to respawn us
     hbase_service = HBaseRegionserver()
     while True:
         hbase_service.emit()
@@ -80,3 +81,4 @@ def main(args):
 if __name__ == "__main__":
     import sys
     sys.exit(main(sys.argv))
+
